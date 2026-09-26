@@ -113,6 +113,4 @@ dialog.querySelector('.dialog-close').addEventListener('click',()=>dialog.close(
 dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)document.querySelectorAll('.site-header nav a').forEach(a=>a.classList.toggle('active',a.hash===`#${entry.target.id}`));}),{rootMargin:'-15% 0px -55% 0px',threshold:0});
 ['episodes','production','more-demos','evolution'].forEach(id=>observer.observe(document.getElementById(id)));
-if(data.repositoryUrl && /^https:\/\/github\.com\/[^/]+\/[^/]+\/?$/.test(data.repositoryUrl)) {
-  const link=document.createElement('a');link.className='repository-link';link.href=data.repositoryUrl;link.textContent='GitHub ↗';link.target='_blank';link.rel='noopener noreferrer';document.querySelector('.nav-label').replaceWith(link);
-}
+

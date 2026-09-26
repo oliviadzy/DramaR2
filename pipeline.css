@@ -68,9 +68,6 @@
 .demo-shot-board li>span { display: grid; place-items: center; flex-shrink: 0; width: 25px; height: 25px; border-radius: 8px; color: #b28e55; background: #faf3e5; font: 10px var(--mono); }
 .demo-shot-board li strong { display: block; font: 10px var(--mono); color: #a28355; margin-bottom: 5px; }
 .demo-shot-board li p { font-size: 12px; line-height: 1.6; margin: 0; color: #7e7e88; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.demo-text-button { padding: 0; border: 0; background: transparent; color: var(--stage,var(--blue)); font-size: 11px; font-weight: 800; text-align: left; cursor: pointer; }
-.demo-text-button:hover { text-decoration: underline; }
-.demo-shot-board>.demo-text-button { margin-top: auto; padding-top: 10px; }
 .demo-prompt { display: flex; flex-direction: column; border: 1px solid #b9d0ed; border-radius: 12px; background: #f4f8ff; overflow: hidden; }
 .demo-prompt-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 17px; background: #eaf2fe; border-bottom: 1px solid #cfdef1; font: 9px var(--mono); color: #7291bb; }
 .demo-prompt-heading strong { font-family: var(--sans); font-size: 11px; color: #769858; }
@@ -109,22 +106,6 @@
 .assembly-steps button:hover { color: var(--blue); background: #e3edfc; }
 .assembly-steps i { display: block; height: 3px; width: var(--progress,0%); background: var(--stage); position: absolute; bottom: 0; left: 0; opacity: .5; }
 .demo-footnote { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; color: #9cacc1; font-size: 10px; margin: 12px 0 0; }
-.assembly-details { margin: 19px 0 0; scroll-margin-top: 110px; }
-.assembly-details>summary { display: flex; align-items: center; gap: 15px; width: fit-content; cursor: pointer; padding: 6px 0; font-size: 12px; color: #7e94b2; }
-.assembly-details>summary:hover { color: var(--blue); }
-.assembly-details>summary>span { font-size: 16px; }
-.assembly-record { margin-top: 15px; border: 1px solid #d0def0; border-radius: 13px; background: #fff; padding: 25px; }
-.record-heading>span { font: 10px var(--mono); color: #91a5c1; }
-.record-heading h5 { margin: 8px 0; font-size: 23px; }
-.record-heading p, .record-note { color: var(--muted); font-size: 13px; line-height: 1.8; }
-.assembly-record pre { max-height: 370px; overflow-y: auto; background: #f5f8fd; border: 1px solid #dce6f3; border-radius: 10px; padding: 20px; font: 12px/1.9 var(--mono); color: #627fa4; white-space: pre-wrap; overflow-wrap: anywhere; }
-.assembly-record code { font: inherit; }
-.assembly-record details { border-top: 1px dashed #cbdcee; margin-top: 20px; }
-.assembly-record details>summary { font-size: 13px; color: var(--blue); cursor: pointer; padding: 15px 0; }
-.record-shots article { padding: 13px 0; }
-.record-shots article>span { font: 10px var(--mono); color: #819abb; }
-.record-shots article>p, .record-layout p { white-space: pre-wrap; overflow-wrap: anywhere; color: var(--muted); font-size: 13px; line-height: 1.9; }
-.record-layout .assembly-image { max-width: 620px; border: 1px solid #d7e3f1; border-radius: 10px; }
 .production-extras { margin-top: 25px; padding-top: 18px; border-top: 1px dashed #c4d6ed; }
 .production-extras>summary { cursor: pointer; font-weight: 700; color: #7891b0; font-size: 14px; padding: 8px 0; }
 .production-extras .asset-grid { margin-top: 20px; }
@@ -163,9 +144,6 @@
   .assembly-progress { padding: 0 17px 14px; } .assembly-steps { gap: 5px; grid-template-columns: repeat(3,minmax(0,1fr)); }
   .assembly-steps button { padding: 9px 5px 11px; font-size: 10px; } .assembly-steps button>span { font-size: 8px; margin-right: 4px; }
   .demo-footnote { font-size: 9px; gap: 5px; margin-top: 11px; }
-  .assembly-details>summary { font-size: 11px; gap: 8px; } .assembly-details { scroll-margin-top: 130px; }
-  .assembly-record { padding: 17px; } .assembly-record pre { padding: 13px; font-size: 11px; }
-  .record-heading h5 { font-size: 21px; } .record-heading>span { font-size: 8px; }
   .production-extras>summary { font-size: 12px; }
 }
 @media(max-width:360px) {

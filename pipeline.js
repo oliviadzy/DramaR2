@@ -29,7 +29,7 @@ window.DRAMA_PIPELINE = (() => {
     images.length = 0;
     const t = beat.trace;
     const {story, plan, gray, direction, wan} = t;
-    const englishPrompt = wan.promptEnglish || wan.prompt;
+    const englishPrompt = wan.promptEnglish;
     const sceneName = t.references.find(r=>r.kind==='scene')?.title || String(plan.sceneId || plan.scene).replace(/^scene_/, '').replaceAll('_',' ');
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
     let step = 0, elapsed = 0, previousTime = null, frame = 0, inView = false;
@@ -46,10 +46,9 @@ window.DRAMA_PIPELINE = (() => {
       <div class="assembly-progress"><div class="assembly-steps" role="group" aria-label="Assembly steps">${steps.map((s,i)=>`<button type="button" data-step-button="${i}" aria-label="Step ${i+1}: ${s.label}"${i===0?' aria-current="step"':''}><span>${pad(i+1)}</span>${s.label}<i aria-hidden="true"></i></button>`).join('')}</div></div>
       <span class="sr-only demo-announcement" aria-live="polite"></span>
     </div>
-    <details class="assembly-details"><summary>Read the full Wan prompt <span aria-hidden="true">↗</span></summary><div class="assembly-record"><div class="record-heading"><span>EPISODE ${pad(ep.number)} / SEGMENT ${pad(beatIndex+1)} / ${esc(t.attempt)}</span><h5>Wan prompt · English translation</h5><p>${esc(wan.model)} · ${ep.number===1?'Selected final-film attempt':'Development attempt, before final repairs'}</p><p>Translated from the recorded submission. Timings, dialogue, reference numbers, and source ellipses are preserved.</p></div><pre tabindex="0" aria-label="Full Wan prompt in English"><code>${esc(englishPrompt)}</code></pre><p class="record-note"><strong>Original submission:</strong> ${esc(wan.note)}</p><p class="record-note">${esc(t.provenanceNote)}</p><details class="record-shots"><summary>Director’s ${direction.shots.length}-shot script</summary>${direction.shots.map((s,i)=>`<article><span>SHOT ${pad(i+1)} · ${esc(s.time)}</span><p>${esc(s.description)}</p></article>`).join('')}</details><details class="record-layout"><summary>Annotated gray-box & spatial notes</summary>${imageButton(`${gray.assetKey}-labeled`,gray.labeledImage,`Annotated gray-box · Episode ${ep.number}, segment ${pad(beatIndex+1)}`,'Diagnostic view. The clean image in the animation is the image bound into the Wan request.')}<p>${esc(gray.description)}</p><p>${esc((gray.notes || []).join('\n\n'))}</p></details></div></details>`;
+`;
 
     const demo = panel.querySelector('.assembly-demo');
-    const detail = panel.querySelector('.assembly-details');
     const playButton = panel.querySelector('[data-play]');
     const scene = panel.querySelector('.demo-scene');
     const modal = document.getElementById('asset-dialog');
@@ -67,8 +66,8 @@ window.DRAMA_PIPELINE = (() => {
         selected.sort((a,b)=>a.slot-b.slot);
         return `<div class="demo-asset-bundle"><div class="demo-reference-grid combined-assets">${selected.map(r=>`<figure>${imageButton(r.assetKey,r.image,r.title,`Image ${r.slot} in the recorded request.`)}<figcaption><span>IMAGE ${r.slot}</span><strong>${esc(r.title)}</strong></figcaption></figure>`).join('')}<figure class="layout-asset">${imageButton(`${gray.assetKey}-sent`,gray.sentImage,`Gray-box opening · Episode ${ep.number}, segment ${pad(beatIndex+1)}`,`Opening-layout asset, bound as reference image ${gray.inputSlot}.`)}<figcaption><span>IMAGE ${gray.inputSlot}</span><strong>Opening layout</strong></figcaption></figure></div><p class="asset-bundle-note">${selected.length} of ${t.references.length} appearance references shown · gray-box included</p></div>`;
       }
-      if (step === 3) return `<div class="demo-shot-board"><div class="shot-board-heading"><span>${direction.shots.length} SHOTS</span><span>${beat.duration}S SEGMENT</span></div><ol>${direction.shots.slice(0,3).map((s,i)=>`<li><span>${pad(i+1)}</span><div><strong>${esc(s.time)}</strong><p>${esc(clip(s.action || s.camera || s.description,125))}</p></div></li>`).join('')}</ol><button type="button" class="demo-text-button" data-source="shots">Explore the ${direction.shots.length}-shot script <span>↗</span></button></div>`;
-      return `<div class="demo-prompt"><div class="demo-prompt-heading"><span>PROMPT PREVIEW</span><strong>Assembled ✓</strong></div><div class="prompt-preview"><code>${esc(englishPrompt.slice(0,1250))}</code></div><div class="prompt-preview-footer"><span>${wan.mediaCounts.reference_image} images · ${wan.mediaCounts.reference_audio || 0} audio references</span><button type="button" class="demo-text-button" data-source="prompt">Read the full prompt ↗</button></div></div>`;
+      if (step === 3) return `<div class="demo-shot-board"><div class="shot-board-heading"><span>${direction.shots.length} SHOTS</span><span>${beat.duration}S SEGMENT</span></div><ol>${direction.shots.slice(0,3).map((s,i)=>`<li><span>${pad(i+1)}</span><div><strong>${esc(String(s.time).replace(/秒/g, 's'))}</strong><p>${esc(clip(s.action || s.camera || s.description,125))}</p></div></li>`).join('')}</ol></div>`;
+      return `<div class="demo-prompt"><div class="demo-prompt-heading"><span>PROMPT PREVIEW</span><strong>Assembled ✓</strong></div><div class="prompt-preview"><code>${esc(englishPrompt.slice(0,1250))}</code></div><div class="prompt-preview-footer"><span>${wan.mediaCounts.reference_image} images · ${wan.mediaCounts.reference_audio || 0} audio references</span></div></div>`;
     }
 
     function paintStep(announce = false) {
@@ -94,7 +93,7 @@ window.DRAMA_PIPELINE = (() => {
       playButton.setAttribute('aria-label',completed?'Replay demo':playing?'Pause demo':'Play demo');
       playButton.setAttribute('aria-pressed',String(playing));
     }
-    function canRun() { return playing && inView && !document.hidden && !detail.open && !modal?.open; }
+    function canRun() { return playing && inView && !document.hidden && !modal?.open; }
     function stopFrame() { cancelAnimationFrame(frame); frame=0; previousTime=null; }
     function tick(now) {
       frame=0;
@@ -118,12 +117,8 @@ window.DRAMA_PIPELINE = (() => {
       if(canRun()) frame=requestAnimationFrame(tick);
     }
     function pause() { playing=false; sync(); }
-    function replay() { step=0;elapsed=0;completed=false;playing=true;detail.open=false;paintStep(true);sync(); }
-    function openSource(which) {
-      pause(); detail.open=true;
-      if(which==='shots') panel.querySelector('.record-shots').open=true;
-      detail.scrollIntoView({behavior:reducedMotion.matches?'auto':'smooth',block:'start'});
-    }
+    function replay() { step=0;elapsed=0;completed=false;playing=true;paintStep(true);sync(); }
+
 
     panel.addEventListener('click',event=>{
       const target=event.target.closest('button');
@@ -131,11 +126,9 @@ window.DRAMA_PIPELINE = (() => {
       if(target.hasAttribute('data-step-button')) {
         step=Number(target.dataset.stepButton);elapsed=0;completed=false;playing=false;paintStep(true);sync();
       } else if(target.hasAttribute('data-replay')) replay();
-      else if(target.hasAttribute('data-play')) { if(completed)replay();else{playing=!playing;if(playing)detail.open=false;sync();} }
-      else if(target.hasAttribute('data-source')) openSource(target.dataset.source);
+      else if(target.hasAttribute('data-play')) { if(completed)replay();else{playing=!playing;sync();} }
       else if(target.hasAttribute('data-asset')) pause();
     },scope);
-    detail.addEventListener('toggle',()=>{if(detail.open)pause();else sync();},scope);
     document.addEventListener('visibilitychange',sync,scope);
     modal?.addEventListener('close',sync,scope);
     reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches)pause();},scope);
