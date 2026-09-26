@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DramaR² — From Story to Screen</title>
+  <meta name="description" content="Explore The Rainseed Protocol, the DramaR² production process, and more short-film demos.">
+  <meta name="theme-color" content="#3c65a7">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%23e9f2ff'/%3E%3Cpath d='M9 9h8a11 11 0 0 1 0 22H9zm6 6v10h2a5 5 0 0 0 0-10z' fill='%23274473'/%3E%3Ccircle cx='30' cy='9' r='6' fill='%237bab4b'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pipeline.css">
+  <link rel="stylesheet" href="evolution.css">
+  <script src="data.js" defer></script><script src="pipeline.js" defer></script><script src="app.js" defer></script><script src="evolution.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#episodes">Skip to episodes</a>
+  <header class="site-header"><div class="nav-wrap">
+    <a class="brand" href="#top" aria-label="Drama R2 home"><img src="brand/logo.png" alt="DramaR²" width="1706" height="663"></a>
+    <nav aria-label="Main navigation"><a class="active" href="#episodes">Episodes</a><a href="#production">Production</a><a href="#more-demos">More demos</a><a href="#evolution">Self-evolution</a></nav>
+    <span class="nav-label" hidden aria-hidden="true"></span>
+  </div></header>
+  <main id="top">
+    <section class="intro wrap" aria-labelledby="page-title">
+      <div class="hero-main"><img class="hero-logo" src="brand/logo-crew.png" alt="DramaR² — director and mentor mascots" width="1933" height="777"><h1 id="page-title">Recursive Self-Improvement<br>for Coherent Short-Drama Generation</h1></div>
+      <div class="intro-side"><p>A self-evolving multi-agent framework for coherent short dramas. Explore the films and the system behind them.</p><div class="loop-tags"><span>Production loop</span><span>Self-improvement loop</span></div><a class="text-link" href="#production">Behind the scenes <span aria-hidden="true">↗</span></a></div>
+    </section>
+    <section class="episodes wrap" id="episodes" aria-labelledby="episodes-title">
+      <div class="section-heading screening-heading"><div><span class="section-no">01 / THE SCREENING ROOM</span><h2 id="episodes-title">The Rainseed Protocol</h2></div><span class="story-count-badge">TWO-PART STORY · 2 EPISODES</span></div>
+      <p class="section-lead">A world waiting for rain. One fragile seed. A story that continues.</p>
+      <div class="episode-choice-heading"><p id="episode-choice-label">Choose an episode</p></div>
+      <div class="episode-choice" role="tablist" aria-labelledby="episode-choice-label">
+        <button class="episode-choice-tab" id="episode-tab-01" type="button" role="tab" data-episode="1" aria-selected="true" aria-controls="episode-01" tabindex="0"><img src="media/episode-01-poster.jpg" alt="" width="160" height="90"><span class="episode-choice-copy"><span class="episode-choice-number">EPISODE 01</span><strong>The First Drop</strong><span class="episode-choice-status" data-episode-state>Now showing</span></span></button>
+        <button class="episode-choice-tab" id="episode-tab-02" type="button" role="tab" data-episode="2" aria-selected="false" aria-controls="episode-02" tabindex="-1"><img src="media/episode-02-poster.jpg" alt="" width="160" height="90"><span class="episode-choice-copy"><span class="episode-choice-number">EPISODE 02</span><strong>The Sky Orchard</strong><span class="episode-choice-status" data-episode-state>Watch episode →</span></span></button>
+      </div>
+      <p id="episode-status" class="sr-only" role="status" aria-live="polite"></p>
+      <noscript><p>Enable JavaScript to explore the featured stories and production records. You can also open the films directly: <a href="media/episode-01.mp4">Episode 1</a> · <a href="media/episode-02.mp4">Episode 2</a>.</p></noscript>
+      <div id="episode-list">
+        <article class="episode" id="episode-01"><div class="film-column"><div class="film-heading"><span class="episode-label">EPISODE 01</span><span>02:49 · ENGLISH SUBTITLES</span></div><video controls playsinline preload="none" poster="media/episode-01-poster.jpg" aria-label="Play The Rainseed Protocol episode 1"><source src="media/episode-01.mp4" type="video/mp4">Your browser does not support video playback.</video><div class="film-caption"><h3>The Rainseed Protocol</h3></div></div><div class="story-column"><div class="story-heading"><span class="eyebrow">THE STORY</span></div><h3>A seed that could change the sky.</h3><div class="story-body"><p>In a world waiting for rain, the Rainseed becomes the center of a continuing journey. Explore the final episode alongside its narrative and the production materials that shaped it.</p></div><a class="text-link" href="#production">Inside this episode <span aria-hidden="true">↗</span></a></div></article>
+      </div>
+    </section>
+    <section class="production" id="production" aria-labelledby="production-title"><div class="wrap"><div class="section-heading"><div><span class="section-no">02 / INSIDE THE PRODUCTION</span><h2 id="production-title">The story behind the frames.</h2></div></div><p class="section-lead">Story plans, a shared visual world, and the path to the final cut.</p><div id="production-content"><div class="process-strip"><div><b>01</b><h3>Story input</h3><p>Narrative intent and continuity.</p></div><div><b>02</b><h3>Story plan</h3><p>Beats become executable segments.</p></div><div><b>03</b><h3>Visual assets</h3><p>Characters, places, and props.</p></div><div><b>04</b><h3>Final cut</h3><p>Generation, repair, and subtitles.</p></div></div></div></div></section>
+    <section class="more-demos wrap" id="more-demos" aria-labelledby="more-demos-title"><div class="section-heading"><div><span class="section-no">03 / MORE DEMOS</span><h2 id="more-demos-title">More stories from DramaR².</h2></div></div><p class="section-lead">Explore more short films made with DramaR².</p><div class="more-demo-grid" id="more-demo-grid"></div><noscript><p>Enable JavaScript to browse the additional films.</p></noscript></section>
+    <section class="evolution wrap" id="evolution" aria-labelledby="evolution-title"><div id="evolution-content"></div><noscript><h2 id="evolution-fallback">Self-evolution</h2><p>Enable JavaScript to explore checkpoint results and the video comparisons.</p></noscript></section>
+  </main>
+  <footer class="wrap"><a class="brand" href="#top"><img src="brand/logo.png" alt="DramaR²" width="1706" height="663"></a><a href="#top">Back to top ↑</a></footer>
+  <dialog id="asset-dialog" aria-labelledby="asset-dialog-title"><button class="dialog-close" aria-label="Close image">×</button><img id="asset-dialog-image" alt=""><div><h3 id="asset-dialog-title"></h3><p id="asset-dialog-description"></p></div></dialog>
+</body></html>
