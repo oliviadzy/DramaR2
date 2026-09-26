@@ -114,7 +114,6 @@ h2 { font-size: 34px; line-height: 1.25; font-weight: 800; letter-spacing: -.8px
 .asset-caption { padding: 13px 15px 16px; border-top: 1px solid #eef2f8; min-height: 88px; }
 .asset-caption>span { font: 10px var(--mono); letter-spacing: 1px; color: var(--muted); }
 .asset-caption h4 { font-size: 16px; font-weight: 800; line-height: 1.4; margin: 5px 0 0; }
-.asset-footnote { font-size: 12px; color: var(--muted); margin: 16px 0 32px; max-width: 860px; }
 .plan-section { border-top: 1px dashed #c3d7ed; padding-top: 20px; }
 .beat-selector { display: grid; grid-template-columns: repeat(7,minmax(0,1fr)); gap: 6px; margin-bottom: 10px; }
 .beat-selector button { border: 1px solid #cbdbee; border-radius: 11px; background: #fff; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; text-align: left; padding: 13px 11px; gap: 7px; color: var(--muted); }
@@ -137,9 +136,6 @@ h2 { font-size: 34px; line-height: 1.25; font-weight: 800; letter-spacing: -.8px
 .state-change i { font-style: normal; color: #978ba6; }
 .state-change strong { font-weight: 700; color: #71509b; }
 .state-note { font-size: 11px; color: var(--muted); margin-top: 20px; }
-.delivery-note { margin-top: 30px; padding: 22px 25px; background: #fff; border: 1px dashed #c3d7ed; border-radius: 15px; }
-.delivery-note h3 { margin: 6px 0 0; font-size: 19px; font-weight: 800; }
-.delivery-note p { margin: 9px 0 0; font-size: 15px; line-height: 1.8; color: var(--muted); max-width: 950px; }
 .spatial-details { margin-top: 24px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .spatial-details summary { padding: 16px 0; cursor: pointer; font-size: 15px; font-weight: 700; }
 .spatial-details summary span { float: right; }
@@ -235,7 +231,6 @@ body:has(dialog[open]) { overflow: hidden; }
   #beat-panel { grid-template-columns: 1fr; }
   .state-panel { border-left: 0; border-top: 1px solid #e0d7ed; max-height: 330px; }
   .spatial-content { grid-template-columns: 1fr; gap: 15px; }
-  .delivery-note { padding: 20px; } .delivery-note p { font-size: 15px; }
   .evolution { padding-top: 30px; padding-bottom: 30px; }
   .evolution-card { padding: 23px; } .evolution h2 { font-size: 32px; }
   .evolution-copy { align-items: flex-start; gap: 13px; } .evolution-copy>img { width: 73px; height: 94px; flex-shrink: 0; }

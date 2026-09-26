@@ -57,8 +57,6 @@ function renderProduction() {
     <details class="production-extras"><summary>Explore this episode’s assets &amp; production notes</summary>
       <div class="subheading"><h3>A world, held together.</h3><span>SELECTED PRODUCTION ASSETS · CLICK TO EXPLORE</span></div>
       <div class="asset-grid">${data.assets.filter(a=>a.episode===selectedEpisode).map(assetCard).join('')}</div>
-      <p class="asset-footnote">Reference sheets define appearance and setting. Frame samples come from generation attempts and may differ from the final cut.</p>
-      <div class="delivery-note"><span class="eyebrow">THE FINAL CUT</span><h3>${e(ep.deliveryLabel)}</h3>${ep.deliveryNote ? `<p>${e(ep.deliveryNote)}</p>` : ''}</div>
     </details>`;
   renderBeat();
 }
@@ -113,4 +111,3 @@ dialog.querySelector('.dialog-close').addEventListener('click',()=>dialog.close(
 dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)document.querySelectorAll('.site-header nav a').forEach(a=>a.classList.toggle('active',a.hash===`#${entry.target.id}`));}),{rootMargin:'-15% 0px -55% 0px',threshold:0});
 ['episodes','production','more-demos','evolution'].forEach(id=>observer.observe(document.getElementById(id)));
-

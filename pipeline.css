@@ -109,7 +109,6 @@
 .production-extras { margin-top: 25px; padding-top: 18px; border-top: 1px dashed #c4d6ed; }
 .production-extras>summary { cursor: pointer; font-weight: 700; color: #7891b0; font-size: 14px; padding: 8px 0; }
 .production-extras .asset-grid { margin-top: 20px; }
-.production-extras .asset-footnote { margin-bottom: 10px; }
 @media(max-width:1000px) {
   .assembly-theater { gap: 20px; padding: 20px; grid-template-columns: minmax(0,1.45fr) minmax(0,1fr); }
   .assembly-topline { padding: 18px 20px; } .assembly-progress { padding: 0 20px 15px; }
